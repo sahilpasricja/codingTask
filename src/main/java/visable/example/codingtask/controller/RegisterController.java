@@ -19,7 +19,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
-@RequestMapping("api/v1")
+@RequestMapping("/api/v1")
 @OpenAPIDefinition(info = @Info(title = "Register API for new User"))
 @Tag(name = "Register Module")
 @AllArgsConstructor
@@ -28,7 +28,7 @@ public class RegisterController {
     private UserService userService;
 
     //ToDo: chage return to message only but in json format
-    @PostMapping("/register/")
+    @PostMapping("/register")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "New user registered successfully."),
             @ApiResponse(responseCode = "409", description = "User already exist.")
