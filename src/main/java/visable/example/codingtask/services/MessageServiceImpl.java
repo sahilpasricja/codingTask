@@ -53,7 +53,6 @@ public class MessageServiceImpl implements  MessageService{
 
         Map<Object, Object> map = new LinkedHashMap<>();;
         map.put("Status", " New message Sent to " +  message.getRecipientId());
-
         return map;
     }
 

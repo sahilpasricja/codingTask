@@ -33,16 +33,23 @@ Backend messaging application assignment based on spring boot and rabbitmq
 
 ## Instructions to run
 
-1. Go to RabbitMQ Server install Directory and run command:
+
+1.  Open project in any IDE as a maven project. Build the application:
 
 ```bash
-rabbitmq-plugins enable rabbitmq_management
+ mvn clean install
 ```
 
-2. Open project in any IDE as a maven project. And run the main file:
+2. Build docker image:
 
 ```bash
-\src\main\java\visable\example\codingtask\CodingTaskApplication.java
+ docker build -t docker-spring-boot-postgres:latest
+``` 
+
+3. Compose and run the docker container :
+
+```bash
+docker-compose up --force-recreate
 ``` 
 
 <a name="documentation"></a>
@@ -50,7 +57,9 @@ rabbitmq-plugins enable rabbitmq_management
 ## Documentation
 
 OpenAPI Specification Swagger documentation is at the default page
-[http://localhost:8080/](http://localhost:8080/)
+
+When running on local machine[http://localhost:8080/](http://localhost:8080/)
+When running on Docker [http://localhost:8081/](http://localhost:8081/)
 
 <a name="testing"></a>
 
