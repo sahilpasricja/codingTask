@@ -1,0 +1,37 @@
+version: '2'
+services:
+  app:
+    image: 'docker-spring-boot-postgres:latest'
+    ports:
+      - "8081:8080"
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    container_name: app
+    depends_on:
+      - dbpostgresql
+      - rabbitmq
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/springbootjpa
+      - SPRING_DATASOURCE_USERNAME=jpaCodeTask
+      - SPRING_DATASOURCE_PASSWORD=jpaCodeTaskPass
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_RABBITMQ_HOST=rabbitmq
+
+  dbpostgresql:
+    image: 'postgres:13.1-alpine'
+    container_name: dbpostgresql
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=jpaCodeTask
+      - POSTGRES_PASSWORD=jpaCodeTaskPass
+      - POSTGRES_DB=springbootjpa
+
+  rabbitmq:
+    image: rabbitmq:3-management
+    container_name: rabbitmq
+    restart: always
+    ports:
+      - "15672:15672"
+      - "5672:5672"

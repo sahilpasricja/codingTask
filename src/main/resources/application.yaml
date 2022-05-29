@@ -1,0 +1,22 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/springbootjpa"
+    driverClassName: org.postgresql.Driver
+    username: jpaCodeTask
+    password: jpaCodeTaskPass
+  main:
+    banner-mode: off
+springdoc:
+    swagger-ui:
+      path: /
+logging:
+  file:
+    name: logs/application_log_fle.txt
+  level:
+    org:
+      hibernate:
+        type: TRACE
